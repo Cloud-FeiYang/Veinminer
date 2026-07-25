@@ -25,6 +25,12 @@ Additionally holding **shift** allows changing the mining depth/width.
 
 ---
 
+> **Affordable** Servers? In this time?! Clicking below **supports me** and saves you **10%** + 2 Days **free** ♥️
+> [<img src="https://cdn.modrinth.com/data/cached_images/d594c32a9208540624e534d88ff2e428fed4c6d2.png" width=95%>](https://voltra.gg/r/miraculixx) <br>
+> #AD - Your support helps to keep this project alive :)
+
+---
+
 The server can configure client behavior with the following options. The client mod will automatically disable itself if the server does not have Veinminer installed.
 
 **Command**: `/veinminer settings client ...`

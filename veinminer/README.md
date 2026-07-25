@@ -22,6 +22,13 @@ Veinminer works server side, so all clients are supported. Even cross loaders & 
 Both comes with preconfigured for ores and pickaxes. Read below how to extend it.
 
 ---
+
+> **Affordable** Servers? In this time?! Clicking below **supports me** and saves you **10%** + 2 Days **free** ♥️
+> [<img src="https://cdn.modrinth.com/data/cached_images/d594c32a9208540624e534d88ff2e428fed4c6d2.png" width=95%>](https://voltra.gg/r/miraculixx) <br>
+> #AD - Your support helps to keep this project alive :)
+
+---
+
 ### Mod/Plugin Version (2.x)
 The advanced (V2) version is a more powerful version that is only usable with Fabric/Quilt, Paper/PurPur/Folia & NeoForge servers.
 
