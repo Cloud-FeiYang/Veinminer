@@ -18,6 +18,7 @@ import net.minecraft.client.renderer.rendertype.RenderTypes
 import net.minecraft.resources.Identifier
 import net.minecraft.util.ARGB
 import net.minecraft.world.phys.Vec3
+import net.minecraft.world.phys.shapes.BooleanOp
 import net.minecraft.world.phys.shapes.Shapes
 import net.minecraft.world.phys.shapes.VoxelShape
 
@@ -65,15 +66,19 @@ object BlockHighlightingRenderer {
             return
         }
 
-        val splines = positions.map {
-            val box = Shapes.box(-0.010, -0.010, -0.010, 1.010, 1.010, 1.010) // Outline
-            //val box = Shapes.box(0.35, 0.35, 0.35, 0.65, 0.65, 0.65) // Inline Box (more clutter)
-            val dx = it.x - source.x
-            val dy = it.y - source.y
-            val dz = it.z - source.z
-            if (dx == 0 && dy == 0 && dz == 0) box
-            else box.move(dx.toDouble(), dy.toDouble(), dz.toDouble())
+        val baseBox = Shapes.box(-0.010, -0.010, -0.010, 1.010, 1.010, 1.010)
+        highlightingShape = positions.fold(Shapes.empty()) { acc, pos ->
+            val dx = (pos.x - source.x).toDouble()
+            val dy = (pos.y - source.y).toDouble()
+            val dz = (pos.z - source.z).toDouble()
+
+            val movedBox = if (dx == 0.0 && dy == 0.0 && dz == 0.0) {
+                baseBox
+            } else {
+                baseBox.move(dx, dy, dz)
+            }
+
+            Shapes.joinUnoptimized(acc, movedBox, BooleanOp.OR)
         }
-        highlightingShape = Shapes.or(splines.first(), *splines.toTypedArray())
     }
 }
