@@ -29,7 +29,7 @@ import net.neoforged.neoforge.client.gui.IConfigScreenFactory
 import net.neoforged.neoforge.client.event.ClientTickEvent
 import net.neoforged.neoforge.client.event.RegisterGuiLayersEvent
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent
-import net.neoforged.neoforge.client.event.RenderLevelStageEvent
+import net.neoforged.neoforge.client.event.SubmitCustomGeometryEvent
 import net.neoforged.neoforge.common.NeoForge
 
 @Mod(value = MOD_ID, dist = [Dist.CLIENT])

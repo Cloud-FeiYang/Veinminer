@@ -24,3 +24,11 @@ Addon for the popular [Veinminer](https://modrinth.com/project/veinminer) mod/pl
 | `anvil_cost` |    7    | How much level combining in anvil costs (stacked with others) |
 
 The enchantment name is defined by a translatable key `enchantment.veinminer-enchantment.veinminer` and defaults to `Veinmine`.
+
+---
+
+> **Affordable** Servers? In this time?! Clicking below **supports me** and saves you **10%** + 2 Days **free** ♥️
+> [<img src="https://cdn.modrinth.com/data/cached_images/d594c32a9208540624e534d88ff2e428fed4c6d2.png" width=95%>](https://voltra.gg/r/miraculixx) <br>
+> #AD - Your support helps to keep this project alive :)
+
+---

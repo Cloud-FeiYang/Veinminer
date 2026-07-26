@@ -18,6 +18,11 @@ import net.minecraft.client.gui.narration.NarratableEntry
 import net.minecraft.client.gui.narration.NarrationElementOutput
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.network.chat.Component
+import net.minecraft.network.chat.TextColor
+import net.minecraft.resources.Identifier
+import net.minecraft.util.Util
+import org.joml.Matrix3x2f
+import org.joml.Matrix3x2fc
 import net.minecraft.resources.ResourceLocation
 import kotlin.math.floor
 import kotlin.math.max
@@ -61,13 +66,22 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
         patternList.setScrollAmount(patternListScrollAmount)
         addRenderableWidget(patternList)
 
-        addRenderableWidget(Button.builder(Component.literal("Done")) { saveAndClose() }.bounds(center - 102, height - 28, 100, 20).build())
+        addRenderableWidget(
+            Button.builder(Component.literal("Done")) {
+                saveAndClose()
+            }.bounds(center - 127, height - 28, 100, 20).build()
+        )
+        addRenderableWidget(
+            Button.builder(Component.literal("HELP").withColor(TextColor.GOLD)) {
+                Util.getPlatform().openUri("https://modrinth.com/mod/veinminer-client")
+            }.bounds(center - 25, height - 28, 50, 20).build()
+        )
         addRenderableWidget(
             Button.builder(Component.literal("Reset")) {
                 ClientPatternConfig.reset()
                 syncSelection()
                 rebuildPatternWidgets()
-            }.bounds(center + 2, height - 28, 100, 20).build()
+            }.bounds(center + 27, height - 28, 100, 20).build()
         )
     }
 
@@ -134,7 +148,7 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
         ClientPatternConfig.save()
         syncSelection()
         NetworkManager.sendPatternConfig()
-        minecraft?.setScreen(parent)
+        minecraft?.gui.setScreen(parent)
     }
 
     private fun openColorPicker(pattern: PatternConfig) {
