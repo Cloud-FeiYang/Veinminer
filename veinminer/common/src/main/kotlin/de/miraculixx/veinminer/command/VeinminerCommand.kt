@@ -43,8 +43,21 @@ object VeinminerCommand {
                     header("Veinminer") + cmp("\nVersion: ") + value(host.versionVeinminer) +
                         cmp(" (") + value(host.platform) + cmp(" - ") + value(host.versionMinecraft) + cmp(")") +
                         cmp("\nDownload: ") + link("Modrinth", "https://modrinth.com/project/veinminer") +
-                        cmp(" | ") + link("CurseForge", "https://www.curseforge.com/minecraft/mc-mods/veinminer-mod")
+                        cmp(" | ") + link("CurseForge", "https://www.curseforge.com/minecraft/mc-mods/veinminer-mod") +
+                        cmp("\nVisit the wiki for more information").link("https://modrinth.com/project/veinminer#config")
                 )
+            }
+
+            literal("help") {
+                executesAsync {
+                    source.sendSystemMessage(
+                        cmp("\nVeinminer comes preconfigured for Ores. " +
+                                "If you like to veinmine more blocks, learn about settings and more, ") +
+                                link("see here", "https://modrinth.com/project/veinminer#config") +
+                        cmp(" (scroll down to 'Mod/Plugin Version' if it doesnt do automatically)") +
+                        cmp("\n- Click on categories to open them")
+                    )
+                }
             }
 
             literal("reload") {
@@ -111,6 +124,7 @@ object VeinminerCommand {
                 applySetting("permissionRestricted", { ActiveConfig.bridge.settings.permissionRestricted }) { x, _ -> ActiveConfig.bridge.settings.permissionRestricted = x }
                 applySetting("mergeItemDrops", { ActiveConfig.bridge.settings.mergeItemDrops }) { x, _ -> ActiveConfig.bridge.settings.mergeItemDrops = x }
                 applySetting("decreaseDurability", { ActiveConfig.bridge.settings.decreaseDurability }) { x, _ -> ActiveConfig.bridge.settings.decreaseDurability = x }
+                applySetting("hungerPerBlock", { ActiveConfig.bridge.settings.hungerPerBlock }) { x, _ -> ActiveConfig.bridge.settings.hungerPerBlock = x }
                 applySetting("miningSpeedModifier", { ActiveConfig.bridge.settings.miningSpeedModifier }) { x, _ -> ActiveConfig.bridge.settings.miningSpeedModifier = x }
                 applySetting("debug", { debug }) { x, _ -> ActiveConfig.bridge.settings.debug = x }
                 literal("client") {
@@ -392,6 +406,7 @@ object VeinminerCommand {
         applySetting("searchRadius", { args -> args.resolve().searchRadius }) { x, args -> args.resolve().searchRadius = x }
         applySetting("permissionRestricted", { args -> args.resolve().permissionRestricted }) { x, args -> args.resolve().permissionRestricted = x }
         applySetting("decreaseDurability", { args -> args.resolve().decreaseDurability }) { x, args -> args.resolve().decreaseDurability = x }
+        applySetting("hungerPerBlock", { args -> args.resolve().hungerPerBlock }) { x, args -> args.resolve().hungerPerBlock = x }
         applySetting("miningSpeedModifier", { args -> args.resolve().miningSpeedModifier }) { x, args -> args.resolve().miningSpeedModifier = x }
     }
 
