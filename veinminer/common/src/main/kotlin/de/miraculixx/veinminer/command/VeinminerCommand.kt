@@ -43,8 +43,21 @@ object VeinminerCommand {
                     header("Veinminer") + cmp("\nVersion: ") + value(host.versionVeinminer) +
                         cmp(" (") + value(host.platform) + cmp(" - ") + value(host.versionMinecraft) + cmp(")") +
                         cmp("\nDownload: ") + link("Modrinth", "https://modrinth.com/project/veinminer") +
-                        cmp(" | ") + link("CurseForge", "https://www.curseforge.com/minecraft/mc-mods/veinminer-mod")
+                        cmp(" | ") + link("CurseForge", "https://www.curseforge.com/minecraft/mc-mods/veinminer-mod") +
+                        cmp("\nVisit the wiki for more information").link("https://modrinth.com/project/veinminer#config")
                 )
+            }
+
+            literal("help") {
+                executesAsync {
+                    source.sendSystemMessage(
+                        cmp("\nVeinminer comes preconfigured for Ores. " +
+                                "If you like to veinmine more blocks, learn about settings and more, ") +
+                                link("see here", "https://modrinth.com/project/veinminer#config") +
+                        cmp(" (scroll down to 'Mod/Plugin Version' if it doesnt do automatically)") +
+                        cmp("\n- Click on categories to open them")
+                    )
+                }
             }
 
             literal("reload") {
