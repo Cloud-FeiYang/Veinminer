@@ -32,7 +32,6 @@ import net.minecraft.network.chat.Component
 import net.minecraft.world.InteractionResult
 import net.minecraft.world.entity.player.Player
 import org.slf4j.Logger
-import java.net.URI
 import kotlin.jvm.optionals.getOrNull
 
 
@@ -99,7 +98,7 @@ class Veinminer : ModInitializer {
                         .append("\n• By default only ores are veinmine-able")
                         .append("\n• Click ").append(Component.literal("here").withColor(cHighlight))
                         .append(" to see how to configure more")
-                        .withStyle { it.withClickEvent(ClickEvent.OpenUrl(URI("https://modrinth.com/project/veinminer#config"))) }
+                        .withStyle { it.withClickEvent(ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/project/veinminer#config")) }
                 )
             }
 

@@ -8,6 +8,7 @@ const val cGreen = 0x55ff55
 const val cBase = 0xaaaaaa
 const val cHighlight = 0x5CA0D4
 const val cWhite = 0xffffff
+const val cGold = 0xffaa00
 
 const val permissionToggle = "veinminer.toggle"
 const val permissionBlocks = "veinminer.blocks"

@@ -2,27 +2,19 @@ package de.miraculixx.veinminerClient.config
 
 import de.miraculixx.veinminer.pattern.PatternConfig
 import de.miraculixx.veinminer.pattern.PatternType
+import de.miraculixx.veinminer.utils.cGold
 import de.miraculixx.veinminerClient.ClientLifecycle
 import de.miraculixx.veinminerClient.network.NetworkManager
 import de.miraculixx.veinminerClient.render.ShapeRouletteOverlay
+import net.minecraft.Util
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.GuiGraphics
-import net.minecraft.client.gui.components.AbstractSliderButton
-import net.minecraft.client.gui.components.AbstractWidget
-import net.minecraft.client.gui.components.Button
-import net.minecraft.client.gui.components.ContainerObjectSelectionList
-import net.minecraft.client.gui.components.CycleButton
-import net.minecraft.client.gui.components.EditBox
+import net.minecraft.client.gui.components.*
 import net.minecraft.client.gui.components.events.GuiEventListener
 import net.minecraft.client.gui.narration.NarratableEntry
 import net.minecraft.client.gui.narration.NarrationElementOutput
 import net.minecraft.client.gui.screens.Screen
 import net.minecraft.network.chat.Component
-import net.minecraft.network.chat.TextColor
-import net.minecraft.resources.Identifier
-import net.minecraft.util.Util
-import org.joml.Matrix3x2f
-import org.joml.Matrix3x2fc
 import net.minecraft.resources.ResourceLocation
 import kotlin.math.floor
 import kotlin.math.max
@@ -72,7 +64,7 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
             }.bounds(center - 127, height - 28, 100, 20).build()
         )
         addRenderableWidget(
-            Button.builder(Component.literal("HELP").withColor(TextColor.GOLD)) {
+            Button.builder(Component.literal("HELP").withColor(cGold)) {
                 Util.getPlatform().openUri("https://modrinth.com/mod/veinminer-client")
             }.bounds(center - 25, height - 28, 50, 20).build()
         )
@@ -148,7 +140,7 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
         ClientPatternConfig.save()
         syncSelection()
         NetworkManager.sendPatternConfig()
-        minecraft?.gui.setScreen(parent)
+        minecraft?.setScreen(parent)
     }
 
     private fun openColorPicker(pattern: PatternConfig) {

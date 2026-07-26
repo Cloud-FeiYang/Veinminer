@@ -35,7 +35,6 @@ import net.neoforged.neoforge.event.level.BlockEvent
 import net.neoforged.neoforge.event.server.ServerStartingEvent
 import net.neoforged.neoforge.event.server.ServerStoppedEvent
 import org.slf4j.Logger
-import java.net.URI
 
 @Mod(Veinminer.MOD_ID)
 class Veinminer(modBus: IEventBus, container: ModContainer) {
@@ -127,7 +126,7 @@ class Veinminer(modBus: IEventBus, container: ModContainer) {
                         .append("\n• By default only ores are veinmine-able")
                         .append("\n• Click ").append(Component.literal("here").withColor(cHighlight))
                         .append(" to see how to configure more")
-                        .withStyle { it.withClickEvent(ClickEvent.OpenUrl(URI("https://modrinth.com/project/veinminer#config"))) }
+                        .withStyle { it.withClickEvent(ClickEvent(ClickEvent.Action.OPEN_URL, "https://modrinth.com/project/veinminer#config")) }
                 )
             }
 
