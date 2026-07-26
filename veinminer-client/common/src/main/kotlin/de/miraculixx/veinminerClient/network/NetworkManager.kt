@@ -58,7 +58,7 @@ object NetworkManager : ClientCallbacks {
         if (packet.settings.debug) ClientLifecycle.LOGGER.info("Configuration packet: $packet")
         if (packet.outdated) {
             SystemToast.add(
-                Minecraft.getInstance().gui.toastManager(), SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
+                Minecraft.getInstance().toastManager, SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
                 Component.literal("Veinminer Outdated"), Component.literal("Please update Veinminer")
             )
         }

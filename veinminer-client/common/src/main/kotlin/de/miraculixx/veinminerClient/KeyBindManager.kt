@@ -38,7 +38,7 @@ object KeyBindManager {
         val toggleKey = KeyBindings.toggle ?: return
         val holdKey = KeyBindings.hold ?: return
         if (KeyBindings.config?.consumeClick() == true) {
-            Minecraft.getInstance().gui.setScreen(PatternConfigScreen(Minecraft.getInstance().gui.screen()))
+            Minecraft.getInstance().setScreen(PatternConfigScreen(Minecraft.getInstance().screen))
         }
 
         if (toggleKey.consumeClick()) isToggled = !isToggled
@@ -50,7 +50,7 @@ object KeyBindManager {
                     notifiedOnce = true
                     val mc = Minecraft.getInstance()
                     SystemToast.add(
-                        mc.gui.toastManager(), SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
+                        mc.toastManager, SystemToast.SystemToastId.PERIODIC_NOTIFICATION,
                         Component.translatable("veinminer.disabled.title"),
                         Component.translatable("veinminer.disabled.subtitle")
                     )

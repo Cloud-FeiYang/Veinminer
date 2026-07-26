@@ -4,6 +4,7 @@ import com.mojang.blaze3d.pipeline.RenderPipeline
 import com.mojang.blaze3d.vertex.VertexConsumer
 import de.miraculixx.veinminer.pattern.PatternConfig
 import de.miraculixx.veinminer.pattern.PatternType
+import de.miraculixx.veinminer.utils.cGold
 import de.miraculixx.veinminerClient.ClientLifecycle
 import de.miraculixx.veinminerClient.network.NetworkManager
 import de.miraculixx.veinminerClient.render.ShapeRouletteOverlay
@@ -22,7 +23,6 @@ import net.minecraft.client.input.KeyEvent
 import net.minecraft.client.input.MouseButtonEvent
 import net.minecraft.client.renderer.RenderPipelines
 import net.minecraft.network.chat.Component
-import net.minecraft.network.chat.TextColor
 import net.minecraft.resources.Identifier
 import net.minecraft.util.Util
 import org.joml.Matrix3x2f
@@ -73,7 +73,7 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
             }.bounds(center - 127, height - 28, 100, 20).build()
         )
         addRenderableWidget(
-            Button.builder(Component.literal("HELP").withColor(TextColor.GOLD)) {
+            Button.builder(Component.literal("HELP").withColor(cGold)) {
                 Util.getPlatform().openUri("https://modrinth.com/mod/veinminer-client")
             }.bounds(center - 25, height - 28, 50, 20).build()
         )
@@ -146,7 +146,7 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
         ClientPatternConfig.save()
         syncSelection()
         NetworkManager.sendPatternConfig()
-        minecraft.gui.setScreen(parent)
+        minecraft.setScreen(parent)
     }
 
     private fun openColorPicker(pattern: PatternConfig) {
