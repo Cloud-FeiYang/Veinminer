@@ -186,6 +186,7 @@ class PatternConfigScreen(private val parent: Screen?) : Screen(Component.litera
         } ?: enabled.first()
         NetworkManager.selectedPattern = selected
         ShapeRouletteOverlay.syncTo(selected, NetworkManager.selectedDepth)
+        ClientPatternConfig.setSelection(selected, NetworkManager.selectedDepth)
     }
 
     private fun panelWidth(): Int = (width - 32).coerceAtMost(900).coerceAtLeast(360)

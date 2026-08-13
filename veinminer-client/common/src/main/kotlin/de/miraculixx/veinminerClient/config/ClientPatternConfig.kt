@@ -14,6 +14,8 @@ import kotlin.io.path.writeText
 data class ClientPatternSettings(
     val patterns: MutableList<PatternConfig> = DefaultPatterns.all(),
     var invertedScroll: Boolean = false,
+    var selectedPatternId: String? = null,
+    var selectedDepth: Int = 6,
 )
 
 object ClientPatternConfig {
@@ -39,6 +41,18 @@ object ClientPatternConfig {
     fun enabledPatterns(): List<PatternConfig> {
         ensureValid(save = true)
         return settings.patterns.filter { it.enabled }
+    }
+
+    fun selectedPattern(): PatternConfig {
+        val enabled = enabledPatterns()
+        return enabled.firstOrNull { it.id == settings.selectedPatternId } ?: enabled.first()
+    }
+
+    fun setSelection(pattern: PatternConfig, depth: Int) {
+        if (settings.selectedPatternId == pattern.id && settings.selectedDepth == depth) return
+        settings.selectedPatternId = pattern.id
+        settings.selectedDepth = depth
+        save()
     }
 
     fun canRemove(pattern: PatternConfig): Boolean = settings.patterns.size > 1 && settings.patterns.contains(pattern)
@@ -111,6 +125,11 @@ object ClientPatternConfig {
         }
         if (patterns.none { it.enabled }) {
             patterns.first().enabled = true
+            dirty = true
+        }
+        val selectedId = settings.selectedPatternId
+        if (selectedId != null && patterns.none { it.enabled && it.id == selectedId }) {
+            settings.selectedPatternId = null
             dirty = true
         }
         if (save && dirty) write(settings)

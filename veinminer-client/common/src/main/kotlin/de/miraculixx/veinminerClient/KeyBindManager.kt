@@ -140,6 +140,7 @@ object KeyBindManager {
             }
         }
         if (dirty) {
+            ClientPatternConfig.setSelection(NetworkManager.selectedPattern, NetworkManager.selectedDepth)
             NetworkManager.resendKeyPress(lastFace)
             lastTarget = null
         }
