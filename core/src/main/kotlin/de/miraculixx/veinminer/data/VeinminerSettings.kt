@@ -57,7 +57,7 @@ data class VeinminerSettings(
         multiplicator: Double
     ): Double {
         val n = veinSize.coerceAtLeast(1)
-        val m = multiplicator.coerceIn(0.0, 1.0)
+        val m = if (multiplicator.isNaN()) 0.0 else multiplicator.coerceIn(0.0, 1.0)
 
         val timeFactor = 1.0 + m * (n - 1) // 0->1x, 1->nx time
         val speedFactor = (1.0 / timeFactor).coerceAtLeast(0.01) // 100x max decrease
