@@ -126,6 +126,7 @@ object VeinminerCommand {
                 applySetting("decreaseDurability", { ActiveConfig.bridge.settings.decreaseDurability }) { x, _ -> ActiveConfig.bridge.settings.decreaseDurability = x }
                 applySetting("hungerPerBlock", { ActiveConfig.bridge.settings.hungerPerBlock }) { x, _ -> ActiveConfig.bridge.settings.hungerPerBlock = x }
                 applySetting("miningSpeedModifier", { ActiveConfig.bridge.settings.miningSpeedModifier }) { x, _ -> ActiveConfig.bridge.settings.miningSpeedModifier = x }
+                applySetting("separateGroupMining", { ActiveConfig.bridge.settings.separateGroupMining }) { x, _ -> ActiveConfig.bridge.settings.separateGroupMining = x }
                 applySetting("debug", { debug }) { x, _ -> ActiveConfig.bridge.settings.debug = x }
                 literal("client") {
                     applySetting("allow", { ActiveConfig.bridge.settings.client.allow }) { x, _ -> ActiveConfig.bridge.settings.client.allow = x }
@@ -408,6 +409,7 @@ object VeinminerCommand {
         applySetting("decreaseDurability", { args -> args.resolve().decreaseDurability }) { x, args -> args.resolve().decreaseDurability = x }
         applySetting("hungerPerBlock", { args -> args.resolve().hungerPerBlock }) { x, args -> args.resolve().hungerPerBlock = x }
         applySetting("miningSpeedModifier", { args -> args.resolve().miningSpeedModifier }) { x, args -> args.resolve().miningSpeedModifier = x }
+        applySetting("separateGroupMining", { args -> args.resolve().separateGroupMining }) { x, args -> args.resolve().separateGroupMining = x }
     }
 
     private fun header(text: String) = cmp(text, cGreen, bold = true)

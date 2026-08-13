@@ -18,6 +18,7 @@ data class VeinminerSettings(
     var decreaseDurability: Boolean = true,
     var hungerPerBlock: Double = 0.0,
     var miningSpeedModifier: Double = 0.0,
+    var separateGroupMining: Boolean = false,
     var debug: Boolean = false,
     val client: VeinminerClientSettings = VeinminerClientSettings()
 ) {
@@ -43,6 +44,7 @@ data class VeinminerSettings(
             decreaseDurability = g?.decreaseDurability ?: (if (isClient) c.decreaseDurability ?: decreaseDurability else decreaseDurability),
             hungerPerBlock = g?.hungerPerBlock ?: (if (isClient) c.hungerPerBlock ?: hungerPerBlock else hungerPerBlock),
             miningSpeedModifier = g?.miningSpeedModifier ?: (if (isClient) c.miningSpeedModifier ?: miningSpeedModifier else miningSpeedModifier),
+            separateGroupMining = g?.separateGroupMining ?: (if (isClient) c.separateGroupMining ?: separateGroupMining else separateGroupMining),
             debug = debug,
             client = client
         )
@@ -86,7 +88,8 @@ data class VeinminerSettingsOverride(
     var permissionRestricted: Boolean? = null,
     var decreaseDurability: Boolean? = null,
     var hungerPerBlock: Double? = null,
-    var miningSpeedModifier: Double? = null
+    var miningSpeedModifier: Double? = null,
+    var separateGroupMining: Boolean? = null
 ) {
     fun nonNullKeys(): List<String> =
         VeinminerSettingsOverride::class.memberProperties.mapNotNull { prop -> prop.get(this)?.let { prop.name } }

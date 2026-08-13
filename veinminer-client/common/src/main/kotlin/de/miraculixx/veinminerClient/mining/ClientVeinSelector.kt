@@ -66,7 +66,7 @@ object ClientVeinSelector {
             if (!hasEnchant) return null
         }
 
-        val targets = if (isGroupBlock) blockGroup.blocks else setOf(material)
+        val targets = if (isGroupBlock && !settings.separateGroupMining) blockGroup.blocks else setOf(material)
         val originPos = BlockPosition(origin.x, origin.y, origin.z)
         val blockAwareness = object : BlockAwareness {
             override fun getBlockType(pos: BlockPosition): Identifier {

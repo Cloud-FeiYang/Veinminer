@@ -145,7 +145,7 @@ object VeinMinerEvent {
 
         if (EventState.enchantmentActive && !mainHandItem.enchantments.keySet().any { it.`is`(EventState.enchantmentKey) }) return null
 
-        val blocks = if (isGroupBlock) blockGroup.blocks else setOf(material)
+        val blocks = if (isGroupBlock && !settings.separateGroupMining) blockGroup.blocks else setOf(material)
         val face = NetworkRouter.lastSurface[player.uuid] ?: Surface.UP
         val sourceLocation = pos.toVeinminer()
         return VeinmineAction(sourceLocation, blocks, mainHandItem, player, sourceLocation, settings, face)

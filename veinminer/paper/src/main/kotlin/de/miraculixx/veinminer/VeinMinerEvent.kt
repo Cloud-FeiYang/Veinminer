@@ -203,7 +203,7 @@ object VeinMinerEvent {
         if (Veinminer.enchantmentActive && !item.enchantments.any { it.key.key == VEINMINE }) return null
 
         // Perform veinminer
-        val blocks = if (isGroupBlock) blockGroup.blocks else setOf(material)
+        val blocks = if (isGroupBlock && !settings.separateGroupMining) blockGroup.blocks else setOf(material)
         if (debug) Veinminer.LOGGER.info(" - Allowed with $blocks")
         val face = NetworkRouter.lastSurface[player.uniqueId] ?: Surface.UP
         val currentPos = block.location.toVeinminer()
