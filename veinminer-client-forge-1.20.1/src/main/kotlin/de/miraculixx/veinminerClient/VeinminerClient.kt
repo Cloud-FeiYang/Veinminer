@@ -28,8 +28,8 @@ import net.minecraftforge.fml.DistExecutor
 import net.minecraftforge.fml.ModList
 import net.minecraftforge.fml.ModLoadingContext
 import net.minecraftforge.fml.common.Mod
-import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext
 import net.minecraftforge.fml.loading.FMLPaths
+import thedarkcolour.kotlinforforge.forge.MOD_BUS
 
 @Mod(MOD_ID)
 class VeinminerClient {
@@ -37,7 +37,7 @@ class VeinminerClient {
     init {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT) {
             Runnable {
-                val modBus = FMLJavaModLoadingContext.get().modEventBus
+                val modBus = MOD_BUS
                 val gameBus = MinecraftForge.EVENT_BUS
                 val container = ModLoadingContext.get().activeContainer
 
