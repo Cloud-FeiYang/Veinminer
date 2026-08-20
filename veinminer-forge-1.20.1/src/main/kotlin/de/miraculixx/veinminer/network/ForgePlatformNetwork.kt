@@ -6,6 +6,7 @@ import net.minecraft.network.FriendlyByteBuf
 import net.minecraft.resources.ResourceLocation
 import net.minecraft.server.level.ServerPlayer
 import net.minecraftforge.network.NetworkDirection
+import net.minecraftforge.network.NetworkInstance
 import net.minecraftforge.network.NetworkRegistry
 import net.minecraftforge.network.PacketDistributor
 import net.minecraftforge.network.simple.SimpleChannel
@@ -17,12 +18,31 @@ import java.util.concurrent.atomic.AtomicInteger
 object ForgePlatformNetwork : PlatformNetwork {
     private const val PROTOCOL_VERSION = "2"
 
-    private val CHANNEL: SimpleChannel = NetworkRegistry.newSimpleChannel(
-        ResourceLocation(NetworkManager.PACKET_IDENTIFIER, "main"),
-        { PROTOCOL_VERSION },
-        { it == PROTOCOL_VERSION || NetworkRegistry.ACCEPTVANILLA == it },
-        { it == PROTOCOL_VERSION || NetworkRegistry.ACCEPTVANILLA == it }
-    )
+    private val CHANNEL: SimpleChannel by lazy {
+        getOrCreateChannel()
+    }
+
+    private fun getOrCreateChannel(): SimpleChannel {
+        val id = ResourceLocation(NetworkManager.PACKET_IDENTIFIER, "main")
+        try {
+            val field = NetworkRegistry::class.java.getDeclaredField("instances")
+            field.isAccessible = true
+            @Suppress("UNCHECKED_CAST")
+            val instances = field.get(null) as Map<ResourceLocation, NetworkInstance>
+            val existing = instances[id]
+            if (existing != null) {
+                return SimpleChannel(existing)
+            }
+        } catch (_: Throwable) {
+        }
+
+        return NetworkRegistry.newSimpleChannel(
+            id,
+            { PROTOCOL_VERSION },
+            { it == PROTOCOL_VERSION || NetworkRegistry.ACCEPTVANILLA == it },
+            { it == PROTOCOL_VERSION || NetworkRegistry.ACCEPTVANILLA == it }
+        )
+    }
 
     private val c2sHandlers: MutableMap<String, (UUID, ByteArray) -> Unit> = ConcurrentHashMap()
     private val packetId = AtomicInteger(0)
