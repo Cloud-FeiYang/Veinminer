@@ -2,10 +2,12 @@
   {
     "name": "Ores",
     "blocks": [
+      "#forge:ores",
       "#c:ores"
     ],
     "tools": [
-      "#minecraft:pickaxes"
+      "#minecraft:pickaxes",
+      "#forge:tools/pickaxes"
     ]
   }
 ]

@@ -82,7 +82,13 @@ class VeinminerClient {
                 }
 
                 gameBus.addListener { _: ClientPlayerNetworkEvent.LoggingIn ->
-                    ClientLifecycle.onJoin(Minecraft.getInstance(), container.modInfo.version.toString())
+                    val version = container.modInfo.version.toString()
+                    ClientLifecycle.onJoin(Minecraft.getInstance(), version)
+                    mcCoroutineAsync(20.ticks) {
+                        if (!NetworkManager.isVeinminerActive && Minecraft.getInstance().connection != null) {
+                            NetworkManager.sendJoin(version)
+                        }
+                    }
                 }
 
                 gameBus.addListener { _: ClientPlayerNetworkEvent.LoggingOut ->

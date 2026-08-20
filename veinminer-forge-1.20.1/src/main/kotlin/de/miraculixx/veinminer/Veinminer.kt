@@ -11,10 +11,12 @@ import de.miraculixx.veinminer.event.VeinMinerEvent
 import de.miraculixx.veinminer.network.ForgePlatformNetwork
 import de.miraculixx.veinminer.network.NetworkRouter
 import de.miraculixx.veinminer.network.ServerCallbacksImpl
+import de.miraculixx.veinminer.network.ServerConfiguration
 import de.miraculixx.veinminer.utils.cGreen
 import de.miraculixx.veinminer.utils.cHighlight
 import de.miraculixx.veinminer.utils.cRed
 import de.miraculixx.veinminer.utils.mcServer
+import de.miraculixx.veinminer.utils.permissionVeinmine
 import net.minecraft.DetectedVersion
 import net.minecraft.network.chat.ClickEvent
 import net.minecraft.network.chat.Component
@@ -98,6 +100,19 @@ class Veinminer {
 
         gameBus.addListener { event: PlayerEvent.PlayerLoggedInEvent ->
             val player = event.entity as? ServerPlayer ?: return@addListener
+            if (NetworkRouter.registeredPlayers.containsKey(player.uuid)) {
+                val conf = ServerConfiguration(
+                    outdated = false,
+                    settings = ConfigManager.settings,
+                    groups = ConfigManager.networkGroups,
+                    veinBlocks = ConfigManager.networkVeinBlocks,
+                    enchantmentActive = EventState.enchantmentActive,
+                    enchantmentKey = EventState.enchantmentKey.location().toString(),
+                    hostActive = ActiveHost.host.active,
+                    hasUsePermission = EventState.checkPermission(player, permissionVeinmine),
+                )
+                NetworkRouter.sendConfiguration(player.uuid, conf)
+            }
             val server = player.server
             val isOp = server.playerList.isOp(player.gameProfile)
             val canConfigure = isOp || !server.isDedicatedServer

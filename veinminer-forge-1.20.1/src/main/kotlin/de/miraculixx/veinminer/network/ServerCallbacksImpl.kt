@@ -12,13 +12,14 @@ object ServerCallbacksImpl : ServerCallbacks {
 
     override fun onJoinAccepted(playerId: UUID, packet: JoinInformation) {
         val server = mcServer ?: return logger.warn("Not enough information to handle 'join (no server)' packet!")
-        val player = server.playerList.getPlayer(playerId) ?: return logger.warn("Not enough information to handle 'join player' packet!")
-
         val settings = ConfigManager.settings
         if (!settings.client.allow) return
 
-        logger.info("${player.scoreboardName} joined with Veinminer version ${packet.veinminerClientVersion}")
         NetworkRouter.registeredPlayers[playerId] = packet.veinminerClientVersion
+
+        val player = server.playerList.getPlayer(playerId)
+        val name = player?.scoreboardName ?: playerId.toString()
+        logger.info("$name joined with Veinminer version ${packet.veinminerClientVersion}")
 
         val conf = ServerConfiguration(
             outdated = false,
@@ -28,7 +29,7 @@ object ServerCallbacksImpl : ServerCallbacks {
             enchantmentActive = EventState.enchantmentActive,
             enchantmentKey = EventState.enchantmentKey.location().toString(),
             hostActive = ActiveHost.host.active,
-            hasUsePermission = EventState.checkPermission(player, permissionVeinmine),
+            hasUsePermission = if (player != null) EventState.checkPermission(player, permissionVeinmine) else true,
         )
         NetworkRouter.sendConfiguration(playerId, conf)
     }

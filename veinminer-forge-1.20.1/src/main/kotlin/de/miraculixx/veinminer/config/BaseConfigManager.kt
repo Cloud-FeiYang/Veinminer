@@ -95,6 +95,9 @@ abstract class BaseConfigManager<T>(
             val defaultSource = this::class.java.classLoader.getResourceAsStream("default_groups.json")?.readAllBytes()?.decodeToString() ?: "[]"
             val defaultGroups = json.decodeFromString<MutableSet<BlockGroup<String>>>(defaultSource)
             groupsRaw = groupsFile.load<MutableSet<BlockGroup<String>>>(defaultGroups, json)
+            if (groupsRaw.isEmpty()) {
+                groupsRaw.addAll(defaultGroups)
+            }
         }
 
         var save = false

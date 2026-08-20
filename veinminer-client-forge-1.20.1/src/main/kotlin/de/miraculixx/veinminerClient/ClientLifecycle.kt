@@ -13,8 +13,10 @@ object ClientLifecycle {
     val LOGGER: Logger = LogUtils.getLogger()
     var veinminerAvailable = false
     var isSinglePlayer = false
+    var cachedVersion: String = "2.11.2"
 
     fun onJoin(mc: Minecraft, version: String) {
+        cachedVersion = version
         isSinglePlayer = mc.singleplayerServer != null
         LOGGER.info("Loading for ${if (isSinglePlayer) "singleplayer" else "multiplayer"}...")
         if (isSinglePlayer && !veinminerAvailable) {

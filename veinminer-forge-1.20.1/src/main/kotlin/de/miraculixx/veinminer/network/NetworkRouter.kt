@@ -1,6 +1,7 @@
 package de.miraculixx.veinminer.network
 
 import de.miraculixx.veinminer.command.ActiveHost
+import de.miraculixx.veinminer.pattern.NormalStrategy
 import de.miraculixx.veinminer.pattern.PatternConfig
 import de.miraculixx.veinminer.pattern.PatternType
 import de.miraculixx.veinminer.pattern.ShapeStrategy
@@ -42,7 +43,6 @@ object NetworkRouter {
             callbacks.onJoinAccepted(uuid, PacketCodecs.JOIN.decode(bytes))
         }
         registerC2S(platform, NetworkManager.PACKET_PATTERNS_ID) { uuid, bytes ->
-            if (!registeredPlayers.containsKey(uuid)) return@registerC2S
             val packet = PacketCodecs.PATTERNS.decode(bytes)
             clientPatterns[uuid] = validatePatterns(packet.patterns)
             callbacks.onPatterns(uuid, packet)
@@ -51,10 +51,6 @@ object NetworkRouter {
             val packet = PacketCodecs.KEY.decode(bytes)
             if (packet.pressed) {
                 val strategy = resolveStrategy(uuid, packet)
-                if (strategy == null) {
-                    clearReadyState(uuid)
-                    return@registerC2S
-                }
                 readyToVeinmine.add(uuid)
                 activeStrategies[uuid] = strategy
                 activeDepth[uuid] = packet.maxDepth.coerceIn(2..Int.MAX_VALUE)
@@ -115,9 +111,9 @@ object NetworkRouter {
         activeDepth.remove(uuid)
     }
 
-    private fun resolveStrategy(uuid: UUID, packet: KeyPress): ShapeStrategy? {
-        val patternId = packet.patternId ?: return null
-        return clientPatterns[uuid]?.get(patternId)?.strategy()
+    private fun resolveStrategy(uuid: UUID, packet: KeyPress): ShapeStrategy {
+        val patternId = packet.patternId ?: return NormalStrategy
+        return clientPatterns[uuid]?.get(patternId)?.strategy() ?: NormalStrategy
     }
 
     private fun validatePatterns(patterns: List<PatternConfig>): Map<String, PatternConfig> {

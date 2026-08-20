@@ -96,6 +96,12 @@ object NetworkManager : ClientCallbacks {
         sendPatternConfig()
     }
 
+    fun retryJoin() {
+        if (!isVeinminerActive && canSend()) {
+            sendJoin(ClientLifecycle.cachedVersion)
+        }
+    }
+
     fun sendPatternConfig() {
         if (!canSend()) return
         ClientNetworkRouter.sendPatterns(ClientPatternSync(ClientPatternConfig.settings.patterns))

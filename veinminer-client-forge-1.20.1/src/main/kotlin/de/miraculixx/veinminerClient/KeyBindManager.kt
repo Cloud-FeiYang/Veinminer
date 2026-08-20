@@ -46,6 +46,7 @@ object KeyBindManager {
 
         if (currentlyActive) {
             if (!NetworkManager.isVeinminerActive) {
+                NetworkManager.retryJoin()
                 if (!notifiedOnce) {
                     notifiedOnce = true
                     val mc = Minecraft.getInstance()
