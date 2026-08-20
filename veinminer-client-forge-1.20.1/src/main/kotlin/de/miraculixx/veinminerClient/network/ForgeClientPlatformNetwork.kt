@@ -71,7 +71,12 @@ object ForgeClientPlatformNetwork : ClientPlatformNetwork {
             { pkt, ctxRef ->
                 val ctx = ctxRef.get()
                 ctx.enqueueWork {
-                    ClientNetworkRouter.dispatchClientbound(pkt.channel, pkt.bytes)
+                    try {
+                        ClientLifecycle.LOGGER.info("ForgeClientPlatformNetwork: received S2C '${pkt.channel}' (${pkt.bytes.size} bytes)")
+                        ClientNetworkRouter.dispatchClientbound(pkt.channel, pkt.bytes)
+                    } catch (e: Exception) {
+                        ClientLifecycle.LOGGER.error("ForgeClientPlatformNetwork: failed to handle S2C '${pkt.channel}': ${e.message}", e)
+                    }
                 }
                 ctx.packetHandled = true
             },

@@ -41,9 +41,11 @@ object ClientNetworkRouter {
 
         platform.registerS2C(NetworkManager.PACKET_CONFIGURATION_ID) { bytes ->
             try {
-                callbacks.onConfiguration(PacketCodecs.CONFIGURATION.decode(bytes))
+                val config = PacketCodecs.CONFIGURATION.decode(bytes)
+                logger.info("Successfully decoded ServerConfiguration: groups=${config.groups.size}, veinBlocks=${config.veinBlocks.size}")
+                callbacks.onConfiguration(config)
             } catch (e: Exception) {
-                logger.warn("Failed to decode S2C 'configuration': ${e.message}")
+                logger.error("Failed to decode S2C 'configuration' (${bytes.size} bytes): ${e.message}", e)
             }
         }
     }

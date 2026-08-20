@@ -105,8 +105,17 @@ object ForgePlatformNetwork : PlatformNetwork {
             ClientNetworkRouter.dispatchClientbound(channel, payload)
             return
         }
-        val player = mcServer?.playerList?.getPlayer(playerId) as? ServerPlayer ?: return
-        CHANNEL.send(PacketDistributor.PLAYER.with { player }, VeinminerForgeS2CPacket(channel, payload))
+        val player = mcServer?.playerList?.getPlayer(playerId) as? ServerPlayer
+        if (player == null) {
+            Veinminer.LOGGER.warn("sendS2C '$channel' failed: Player $playerId not found in playerList")
+            return
+        }
+        try {
+            Veinminer.LOGGER.info("Sending S2C '$channel' (${payload.size} bytes) to ${player.scoreboardName}")
+            CHANNEL.send(PacketDistributor.PLAYER.with { player }, VeinminerForgeS2CPacket(channel, payload))
+        } catch (e: Exception) {
+            Veinminer.LOGGER.error("Failed to send S2C '$channel' to ${player.scoreboardName}: ${e.message}", e)
+        }
     }
 
     fun sendC2S(channel: String, bytes: ByteArray) {

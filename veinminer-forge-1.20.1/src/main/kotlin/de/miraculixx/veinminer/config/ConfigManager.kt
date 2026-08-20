@@ -8,10 +8,11 @@ import de.miraculixx.veinminer.utils.mcServer
 import de.miraculixx.veinminer.utils.permissionVeinmine
 import kotlinx.serialization.modules.SerializersModule
 import net.minecraft.resources.ResourceLocation
+import net.minecraftforge.fml.loading.FMLPaths
 import kotlin.io.path.Path
 
 object ConfigManager : BaseConfigManager<ResourceLocation>(
-    configDir = Path("config/Veinminer"),
+    configDir = runCatching { FMLPaths.CONFIGDIR.get().resolve("veinminer") }.getOrElse { Path("config/veinminer") },
     serializer = IdentifierConfigSerializer,
     jsonModule = SerializersModule {
         contextual(ResourceLocation::class, ResourceLocationSerializer)

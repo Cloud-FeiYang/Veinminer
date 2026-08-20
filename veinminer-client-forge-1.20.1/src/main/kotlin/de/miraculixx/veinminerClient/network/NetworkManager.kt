@@ -96,8 +96,12 @@ object NetworkManager : ClientCallbacks {
         sendPatternConfig()
     }
 
+    private var lastJoinAttempt: Long = 0L
+
     fun retryJoin() {
-        if (!isVeinminerActive && canSend()) {
+        val now = System.currentTimeMillis()
+        if (!isVeinminerActive && canSend() && now - lastJoinAttempt > 3000L) {
+            lastJoinAttempt = now
             sendJoin(ClientLifecycle.cachedVersion)
         }
     }
