@@ -1,7 +1,7 @@
 package de.miraculixx.veinminerClient
 
-import de.miraculixx.veinminer.pattern.Surface
-import de.miraculixx.veinminer.utils.toVeinminer
+import de.miraculixx.veinminerClient.core.pattern.Surface
+import de.miraculixx.veinminerClient.core.utils.toVeinminer
 import de.miraculixx.veinminerClient.config.ClientPatternConfig
 import de.miraculixx.veinminerClient.config.PatternConfigScreen
 import de.miraculixx.veinminerClient.constants.KeyBindings

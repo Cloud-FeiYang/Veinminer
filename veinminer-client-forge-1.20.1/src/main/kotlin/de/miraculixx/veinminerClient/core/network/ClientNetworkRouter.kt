@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.network
+package de.miraculixx.veinminerClient.core.network
 
 import com.mojang.logging.LogUtils
 import org.slf4j.Logger

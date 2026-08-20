@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.extensions
+package de.miraculixx.veinminerClient.core.extensions
 
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers

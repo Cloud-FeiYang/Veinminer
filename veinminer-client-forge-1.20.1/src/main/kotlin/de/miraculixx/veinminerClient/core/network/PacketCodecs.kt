@@ -1,7 +1,7 @@
-package de.miraculixx.veinminer.network
+package de.miraculixx.veinminerClient.core.network
 
-import de.miraculixx.veinminer.pattern.Surface
-import de.miraculixx.veinminer.utils.json
+import de.miraculixx.veinminerClient.core.pattern.Surface
+import de.miraculixx.veinminerClient.core.utils.json
 import net.minecraft.network.FriendlyByteBuf
 
 object PacketCodecs {

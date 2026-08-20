@@ -1,7 +1,7 @@
-package de.miraculixx.veinminer.network
+package de.miraculixx.veinminerClient.core.network
 
-import de.miraculixx.veinminer.pattern.PatternConfig
-import de.miraculixx.veinminer.pattern.Surface
+import de.miraculixx.veinminerClient.core.pattern.PatternConfig
+import de.miraculixx.veinminerClient.core.pattern.Surface
 import kotlinx.serialization.Serializable
 
 @Serializable

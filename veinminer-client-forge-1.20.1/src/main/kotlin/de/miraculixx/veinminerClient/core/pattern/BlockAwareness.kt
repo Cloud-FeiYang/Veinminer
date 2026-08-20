@@ -1,7 +1,7 @@
-package de.miraculixx.veinminer.pattern
+package de.miraculixx.veinminerClient.core.pattern
 
-import de.miraculixx.veinminer.data.BlockPosition
-import de.miraculixx.veinminer.data.VeinminerSettings
+import de.miraculixx.veinminerClient.core.data.BlockPosition
+import de.miraculixx.veinminerClient.core.data.VeinminerSettings
 import net.minecraft.resources.ResourceLocation
 
 interface BlockAwareness {

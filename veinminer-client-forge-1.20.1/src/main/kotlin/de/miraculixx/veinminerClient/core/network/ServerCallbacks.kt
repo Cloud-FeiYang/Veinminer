@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.network
+package de.miraculixx.veinminerClient.core.network
 
 import java.util.UUID
 

@@ -1,14 +1,14 @@
 package de.miraculixx.veinminerClient.mining
 
-import de.miraculixx.veinminer.data.BlockPosition
-import de.miraculixx.veinminer.data.FixedBlockGroup
-import de.miraculixx.veinminer.data.VeinminerSettingsOverride
-import de.miraculixx.veinminer.pattern.BlockAwareness
-import de.miraculixx.veinminer.pattern.PatternConfig
-import de.miraculixx.veinminer.pattern.Surface
-import de.miraculixx.veinminer.pattern.VeinmineAction
-import de.miraculixx.veinminer.pattern.Veinmining
-import de.miraculixx.veinminer.pattern.isMatureAgeTarget
+import de.miraculixx.veinminerClient.core.data.BlockPosition
+import de.miraculixx.veinminerClient.core.data.FixedBlockGroup
+import de.miraculixx.veinminerClient.core.data.VeinminerSettingsOverride
+import de.miraculixx.veinminerClient.core.pattern.BlockAwareness
+import de.miraculixx.veinminerClient.core.pattern.PatternConfig
+import de.miraculixx.veinminerClient.core.pattern.Surface
+import de.miraculixx.veinminerClient.core.pattern.VeinmineAction
+import de.miraculixx.veinminerClient.core.pattern.Veinmining
+import de.miraculixx.veinminerClient.core.pattern.isMatureAgeTarget
 import de.miraculixx.veinminerClient.network.NetworkManager
 import net.minecraft.client.player.LocalPlayer
 import net.minecraft.core.BlockPos

@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.network
+package de.miraculixx.veinminerClient.core.network
 
 import io.netty.buffer.Unpooled
 import net.minecraft.network.FriendlyByteBuf

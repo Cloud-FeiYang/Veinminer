@@ -1,8 +1,8 @@
 package de.miraculixx.veinminerClient
 
 import com.mojang.blaze3d.platform.InputConstants
-import de.miraculixx.veinminer.extensions.mcCoroutineAsync
-import de.miraculixx.veinminer.extensions.ticks
+import de.miraculixx.veinminerClient.core.extensions.mcCoroutineAsync
+import de.miraculixx.veinminerClient.core.extensions.ticks
 import de.miraculixx.veinminerClient.ClientLifecycle.MOD_ID
 import de.miraculixx.veinminerClient.config.ClientPatternConfig
 import de.miraculixx.veinminerClient.config.PatternConfigScreen

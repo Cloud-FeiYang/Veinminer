@@ -1,6 +1,6 @@
-package de.miraculixx.veinminer.pattern
+package de.miraculixx.veinminerClient.core.pattern
 
-import de.miraculixx.veinminer.data.BlockPosition
+import de.miraculixx.veinminerClient.core.data.BlockPosition
 import kotlin.math.abs
 
 object Veinmining {

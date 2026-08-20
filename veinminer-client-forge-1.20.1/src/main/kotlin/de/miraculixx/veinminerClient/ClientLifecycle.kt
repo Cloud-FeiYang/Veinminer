@@ -1,7 +1,7 @@
 package de.miraculixx.veinminerClient
 
 import com.mojang.logging.LogUtils
-import de.miraculixx.veinminer.UpdateManager
+import de.miraculixx.veinminerClient.core.UpdateManager
 import de.miraculixx.veinminerClient.network.NetworkManager
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.components.toasts.SystemToast

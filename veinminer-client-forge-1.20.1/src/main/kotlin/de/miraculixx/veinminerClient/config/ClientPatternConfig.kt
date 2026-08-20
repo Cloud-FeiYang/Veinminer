@@ -1,10 +1,10 @@
 package de.miraculixx.veinminerClient.config
 
-import de.miraculixx.veinminer.extensions.load
-import de.miraculixx.veinminer.pattern.DefaultPatterns
-import de.miraculixx.veinminer.pattern.PatternConfig
-import de.miraculixx.veinminer.pattern.PatternType
-import de.miraculixx.veinminer.utils.json
+import de.miraculixx.veinminerClient.core.extensions.load
+import de.miraculixx.veinminerClient.core.pattern.DefaultPatterns
+import de.miraculixx.veinminerClient.core.pattern.PatternConfig
+import de.miraculixx.veinminerClient.core.pattern.PatternType
+import de.miraculixx.veinminerClient.core.utils.json
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.encodeToString
 import java.nio.file.Path

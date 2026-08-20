@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.pattern
+package de.miraculixx.veinminerClient.core.pattern
 
 import kotlinx.serialization.Serializable
 import net.minecraft.resources.ResourceLocation

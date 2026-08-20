@@ -1,8 +1,8 @@
 package de.miraculixx.veinminerClient.config
 
-import de.miraculixx.veinminer.pattern.PatternConfig
-import de.miraculixx.veinminer.pattern.PatternType
-import de.miraculixx.veinminer.utils.cGold
+import de.miraculixx.veinminerClient.core.pattern.PatternConfig
+import de.miraculixx.veinminerClient.core.pattern.PatternType
+import de.miraculixx.veinminerClient.core.utils.cGold
 import de.miraculixx.veinminerClient.ClientLifecycle
 import de.miraculixx.veinminerClient.network.NetworkManager
 import de.miraculixx.veinminerClient.render.ShapeRouletteOverlay

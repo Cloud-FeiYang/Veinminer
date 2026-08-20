@@ -1,9 +1,9 @@
-package de.miraculixx.veinminer
+package de.miraculixx.veinminerClient.core
 
 import com.mojang.logging.LogUtils
-import de.miraculixx.veinminer.data.ModrinthFile
-import de.miraculixx.veinminer.data.ModrinthVersion
-import de.miraculixx.veinminer.utils.json
+import de.miraculixx.veinminerClient.core.data.ModrinthFile
+import de.miraculixx.veinminerClient.core.data.ModrinthVersion
+import de.miraculixx.veinminerClient.core.utils.json
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job

@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.data
+package de.miraculixx.veinminerClient.core.data
 
 import kotlinx.serialization.Serializable
 

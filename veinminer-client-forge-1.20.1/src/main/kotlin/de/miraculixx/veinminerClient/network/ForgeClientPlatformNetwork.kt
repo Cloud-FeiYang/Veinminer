@@ -1,8 +1,8 @@
 package de.miraculixx.veinminerClient.network
 
-import de.miraculixx.veinminer.network.ClientNetworkRouter
-import de.miraculixx.veinminer.network.ClientPlatformNetwork
-import de.miraculixx.veinminer.network.NetworkManager
+import de.miraculixx.veinminerClient.core.network.ClientNetworkRouter
+import de.miraculixx.veinminerClient.core.network.ClientPlatformNetwork
+import de.miraculixx.veinminerClient.core.network.NetworkManager
 import de.miraculixx.veinminerClient.ClientLifecycle
 import io.netty.buffer.Unpooled
 import net.minecraft.network.FriendlyByteBuf

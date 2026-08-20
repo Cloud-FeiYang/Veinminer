@@ -1,13 +1,11 @@
 package de.miraculixx.veinminerClient.render
 
 import com.mojang.blaze3d.vertex.PoseStack
-import de.miraculixx.veinminer.data.BlockPosition
-import de.miraculixx.veinminerClient.ClientLifecycle
 import de.miraculixx.veinminerClient.KeyBindManager
+import de.miraculixx.veinminerClient.core.data.BlockPosition
 import de.miraculixx.veinminerClient.network.NetworkManager
 import net.minecraft.client.renderer.MultiBufferSource
 import net.minecraft.client.renderer.RenderType
-import net.minecraft.client.renderer.VeinminerRenderTypeHelper
 import net.minecraft.world.phys.Vec3
 import net.minecraft.world.phys.shapes.BooleanOp
 import net.minecraft.world.phys.shapes.Shapes
@@ -18,9 +16,7 @@ object BlockHighlightingRenderer {
     private var highlightingShape: VoxelShape = Shapes.empty()
 
     private val renderHighlighting: RenderType = RenderType.lines()
-    private val renderHighlightingTranslucent: RenderType by lazy {
-        VeinminerRenderTypeHelper.createTranslucentLines("${ClientLifecycle.MOD_ID}:highlight_translucent")
-    }
+    private val renderHighlightingTranslucent: RenderType = RenderType.lines()
 
     fun render(
         stack: PoseStack,

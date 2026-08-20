@@ -2,16 +2,16 @@
 
 package de.miraculixx.veinminerClient.network
 
-import de.miraculixx.veinminer.data.BlockGroup
-import de.miraculixx.veinminer.data.VeinminerSettings
-import de.miraculixx.veinminer.network.ClientCallbacks
-import de.miraculixx.veinminer.network.ClientNetworkRouter
-import de.miraculixx.veinminer.network.ClientPatternSync
-import de.miraculixx.veinminer.network.ClientPlatformNetwork
-import de.miraculixx.veinminer.network.KeyPress
-import de.miraculixx.veinminer.network.ServerConfiguration
-import de.miraculixx.veinminer.pattern.PatternConfig
-import de.miraculixx.veinminer.pattern.Surface
+import de.miraculixx.veinminerClient.core.data.BlockGroup
+import de.miraculixx.veinminerClient.core.data.VeinminerSettings
+import de.miraculixx.veinminerClient.core.network.ClientCallbacks
+import de.miraculixx.veinminerClient.core.network.ClientNetworkRouter
+import de.miraculixx.veinminerClient.core.network.ClientPatternSync
+import de.miraculixx.veinminerClient.core.network.ClientPlatformNetwork
+import de.miraculixx.veinminerClient.core.network.KeyPress
+import de.miraculixx.veinminerClient.core.network.ServerConfiguration
+import de.miraculixx.veinminerClient.core.pattern.PatternConfig
+import de.miraculixx.veinminerClient.core.pattern.Surface
 import de.miraculixx.veinminerClient.ClientLifecycle
 import de.miraculixx.veinminerClient.config.ClientPatternConfig
 import net.minecraft.client.Minecraft

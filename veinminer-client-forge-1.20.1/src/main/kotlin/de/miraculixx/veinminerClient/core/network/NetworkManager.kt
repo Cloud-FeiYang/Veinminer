@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.network
+package de.miraculixx.veinminerClient.core.network
 
 object NetworkManager {
     const val PACKET_IDENTIFIER = "veinminer"

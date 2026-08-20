@@ -1,7 +1,7 @@
-package de.miraculixx.veinminer.extensions
+package de.miraculixx.veinminerClient.core.extensions
 
 import com.mojang.logging.LogUtils
-import de.miraculixx.veinminer.utils.json
+import de.miraculixx.veinminerClient.core.utils.json
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import java.nio.file.Path

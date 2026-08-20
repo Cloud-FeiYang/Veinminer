@@ -1,4 +1,4 @@
-package de.miraculixx.veinminer.pattern
+package de.miraculixx.veinminerClient.core.pattern
 
 import net.minecraft.world.level.block.state.BlockState
 import net.minecraft.world.level.block.state.properties.IntegerProperty

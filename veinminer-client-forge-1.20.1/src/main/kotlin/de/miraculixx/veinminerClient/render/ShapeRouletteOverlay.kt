@@ -1,8 +1,8 @@
 package de.miraculixx.veinminerClient.render
 
 import com.mojang.blaze3d.systems.RenderSystem
-import de.miraculixx.veinminer.network.KeyPress
-import de.miraculixx.veinminer.pattern.PatternConfig
+import de.miraculixx.veinminerClient.core.network.KeyPress
+import de.miraculixx.veinminerClient.core.pattern.PatternConfig
 import de.miraculixx.veinminerClient.config.ClientPatternConfig
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.Font
